@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Class</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	
+	
+
+	<div class="login">
+		<h2>Sign Up</h2>
+		<h3></h3>
+		<img src="assets/img/loading.gif" alt="">
+		<hr>
+		<label for="">Name</label>
+		<input id="name" type="text">
+
+		<label for="">Email</label>
+		<input id="email" type="text">
+
+		<label for="">Cell</label>
+		<input id="cell" type="text">
+
+		<label for="">Password</label>
+		<input id="pass" type="text">
+
+		<button>Sign Up</button>
+	</div>
+
+
+	<script src="assets/js/jquery-3.4.1.min.js"></script>
+	<script>
+		
+		$('.login button').click(function(){
+
+			let name = $('.login input#name').val();
+			let email = $('.login input#email').val();
+			let cell = $('.login input#cell').val();
+			let pass = $('.login input#pass').val();
+
+			$('.login img').show();
+
+
+			let loading = setInterval(function(){
+				$('.login img').hide();
+				if( name == '' || email == '' || cell == '' || pass == '' ){
+					$('.login h3').html('<span style="color:red;"> Field must not be Empty ! </span>');
+				}else {
+					$('.login h3').html('<span style="color:green;"> Data stable </span>');
+				}
+
+
+				let cls = setInterval(function(){
+					$('.login h3').html('');
+					clearInterval(cls);
+				}, 5000);
+
+
+				clearInterval(loading);
+
+			}, 3000);
+
+		});
+		
+	</script>
+</body>
+</html>
